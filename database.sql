@@ -32,3 +32,6 @@ CREATE TABLE "user_dates" (
     "user_id" INT REFERENCES "user" NOT NULL,
     "dates_id" INT REFERENCES "dates" NOT NULL
 );
+
+INSERT INTO "bike" ('type')
+VALUES ('Mountain'), ('Road'), ('Gravel'), ('BMX'), ('Virtual');

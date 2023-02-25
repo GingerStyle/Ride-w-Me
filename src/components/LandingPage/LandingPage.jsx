@@ -6,7 +6,7 @@ import './LandingPage.css';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
+  const [heading, setHeading] = useState('Welcome to Ride w/ Me');
   const history = useHistory();
 
   const onLogin = (event) => {
@@ -20,35 +20,16 @@ function LandingPage() {
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
+            Do you ride a bike? Do you have friends that ride bikes? 
+            Do you ride your bike with those friends as much as you would like, or are you one of the many people that seem to ride by themselves more often than they would like?
+            We all live busy lives and it can be hard to schedule bike rides with friends especially on short notice. 
+            Well Ride w/ Me works to fix this problem by providing a way for friends to show their short term schedule of when they are available to ride with other friends. 
+            Ride w/ Me allows you to search for friends with dates that you want to ride and also own the type of bike that you want to ride. 
+            Want to ride your mountain bike this Saturday? See which of your friends has a mountain bike and wants to ride this Saturday. 
+            Want to ride your road bike next Tuesday, find out who rides road bikes and can go for a ride that day.
           </p>
-
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
-
-          <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
+            So sign up or login today and get out there riding with your friends!
           </p>
         </div>
         <div className="grid-col grid-col_4">
