@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function RegisterForm() {
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -21,6 +23,9 @@ function RegisterForm() {
         phone: phone,
       },
     });
+
+    history.push('/bike');
+
   }; // end registerUser
 
   return (
@@ -41,7 +46,7 @@ function RegisterForm() {
             required
             onChange={(event) => setUsername(event.target.value)}
           />
-        </label>
+        </label>*
       </div>
       <div>
         <label htmlFor="password">
@@ -53,7 +58,7 @@ function RegisterForm() {
             required
             onChange={(event) => setPassword(event.target.value)}
           />
-        </label>
+        </label>*
       </div>
       <div>
         <label htmlFor="email">
@@ -65,7 +70,7 @@ function RegisterForm() {
             required
             onChange={(event) => setEmail(event.target.value)}
           />
-        </label>
+        </label>*
       </div>
       <div>
         <label htmlFor="phone">
@@ -80,6 +85,9 @@ function RegisterForm() {
       </div>
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
+      </div>
+      <div>
+        <p>* Required field</p>
       </div>
     </form>
   );
