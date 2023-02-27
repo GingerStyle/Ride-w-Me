@@ -1,32 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import './BikePage.css';
 
 
 function BikePage() {
     const dispatch = useDispatch();
-    const bikeList = useSelector(store => store.userBikes);
-    const [addType, setAddType] = useState('');
-    const [removeType, setRemoveType] =useState('');
+    //const userBikes = useSelector(store => store.userBikes);
+    const bikeTypes = useSelector(store => store.bikeTypes);
+    const history = useHistory();
 
     useEffect(() => {
-        dispatch({type: 'FETCH_USER_BIKES'});
+        //get the list of available bike types
+        dispatch({type: 'FETCH_BIKE_TYPES'});
+        //get the list of bike types that user owns
+        //dispatch({type: 'FETCH_USER_BIKES'});
     }, [dispatch]);
 
+    function handleAddBike() {
+        
+    }
+
+    function handleRemoveBike() {
+
+    }
+
     return(
-        <div>
-            <select id="add-bike-select" onChange={(event) => setAddType(event.target.value)}>
+        <div className="bike-page-elements">
+            <select className="bike-page-element" id="bike-select">
                 <option value="">Select Bike Type</option>
-
+                {bikeTypes.map((type) => <option key={type.id} value={type.id}>{type.type}</option>)}
             </select>
-            <button>Add Bike Type</button>
+            <button className="bike-page-element" onClick={() => handleAddBike()}>Add Bike Type</button> 
+            <button className="bike-page-element" onClick={() => handleRemoveBike()}>Remove Bike Type</button>
             <br></br>
-            <select id="remove-bike-select" onChange={(event) => setRemoveType(event.target.value)}>
-                <option value="">Select Bike Type</option>
-
-            </select>
-            <button>Remove Bike Type</button>
-            <br></br>
-            <button>Done</button>
+            <button className="bike-page-element" onClick={() => history.push('/user')}>Done</button>
         </div>
     );
 }

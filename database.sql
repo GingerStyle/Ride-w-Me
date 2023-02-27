@@ -33,5 +33,10 @@ CREATE TABLE "user_dates" (
     "dates_id" INT REFERENCES "dates" NOT NULL
 );
 
-INSERT INTO "bike" ('type')
+CREATE TABLE "bike_types" (
+	"id" SERIAL PRIMARY KEY,
+	"type" VARCHAR NOT NULL
+);
+
+INSERT INTO "bike_types" ('type')
 VALUES ('Mountain'), ('Road'), ('Gravel'), ('BMX'), ('Virtual');
