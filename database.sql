@@ -13,6 +13,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE "bike" (
     "id" SERIAL PRIMARY KEY,
+    "user_id" VARCHAR,
     "type" VARCHAR
 );
 

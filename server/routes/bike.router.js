@@ -6,7 +6,7 @@ const router = express.Router();
 
 // gets list of available bike types
 router.get('/types', (req, res) => {
-    queryText = 'SELECT * FROM "bike_types";';
+    let queryText = 'SELECT * FROM "bike_types";';
     pool.query(queryText)
     .then((response) => {
         res.send(response.rows);
@@ -16,7 +16,28 @@ router.get('/types', (req, res) => {
     });
 });
 
-// updates user's list of bike types that they own
+// adds a bike type to user on the bike table from the BikePage
+router.post('/addType', (req, res) => {
+    console.log('req.body contains', req.body);
+    let queryText = `INSERT INTO "bike" ("user_id", "type") VALUES ($1, $2);`;
+    pool.query(queryText, [req.body.userId, req.body.bikeType])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error adding user bike type', error);
+    });
+});
 
+// removes a bike type to user on the bike table from the BikePage
+router.delete('/removeType', (req, res) => {
+    console.log('req.body contains', req.body);
+    let queryText = `DELETE FROM "bike" WHERE "user_id"=${req.body.userId} AND "type"=${req.body.bikeType};`;
+    pool.query(queryText)
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error with removing user bike type', error);
+    });
+});
 
 module.exports = router;
