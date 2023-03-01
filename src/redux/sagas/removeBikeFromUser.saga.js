@@ -7,7 +7,7 @@ function* removeBikeTypeToUser() {
 
 function* removeBike(action){
     try{
-        yield axios.delete('/api/bike/removeType', action.payload);
+        yield axios.delete(`/api/bike/removeType/${action.payload.bikeType}`);
     }catch (error){
         console.log('error in removeBikeTypeToUser', error);
     }

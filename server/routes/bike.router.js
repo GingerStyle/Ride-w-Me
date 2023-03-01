@@ -29,9 +29,10 @@ router.post('/addType', (req, res) => {
 });
 
 // removes a bike type to user on the bike table from the BikePage
-router.delete('/removeType', (req, res) => {
-    console.log('req.body contains', req.body);
-    let queryText = `DELETE FROM "bike" WHERE "user_id"=${req.body.userId} AND "type"=${req.body.bikeType};`;
+router.delete('/removeType/:id', (req, res) => {
+    console.log('req.params.id contains', req.params.id);
+    console.log('req.user.id contains', req.user.id);
+    let queryText = `DELETE FROM "bike" WHERE "user_id"=${req.user.id} AND "type"='${req.params.id}';`;
     pool.query(queryText)
     .then(() => {
         res.sendStatus(200);
