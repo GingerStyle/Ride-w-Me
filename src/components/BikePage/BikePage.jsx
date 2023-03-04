@@ -6,7 +6,7 @@ import './BikePage.css';
 
 function BikePage() {
     const dispatch = useDispatch();
-    //const userBikes = useSelector(store => store.userBikes);
+    const userBikes = useSelector(store => store.userBikes);
     const bikeTypes = useSelector(store => store.bikeTypes);
     const history = useHistory();
     const [bikeSelected, setBikeSelected] = useState('');
@@ -16,19 +16,24 @@ function BikePage() {
         //get the list of available bike types
         dispatch({type: 'FETCH_BIKE_TYPES'});
         //get the list of bike types that user owns
-        //dispatch({type: 'FETCH_USER_BIKES'});
+        dispatch({type: 'FETCH_USER_BIKES'});
     }, [dispatch]);
 
     function handleAddBike() {
         if (bikeSelected != ""){
             dispatch({type: 'ADD_BIKE_TO_USER', payload: {bikeType: bikeSelected, userId: user.id}});
-        }
+            dispatch({type: 'FETCH_USER_BIKES'});
+        } else {
+            alert('Please select a bike to add.');
+        };
     }
 
     function handleRemoveBike() {
         if (bikeSelected != ""){
             dispatch({type: 'REMOVE_BIKE_FROM_USER', payload: {bikeType: bikeSelected, userId: user.id}});
-        }
+        } else {
+            alert('Please select a bike to remove.');
+        };
     }
 
     return(

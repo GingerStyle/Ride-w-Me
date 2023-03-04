@@ -3,6 +3,16 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 // gets list of bike types that the user owns
+router.get('/userBikes', (req, res) => {
+    let queryText = `SELECT "type" FROM "bike" WHERE "user_id" = $1;`;
+    pool.query(queryText, [req.user.id])
+    .then((response) => {
+        res.send(response.rows);
+    }).catch((error) => {
+        console.log('error getting user bike list', error);
+        res.sendStatus(500);
+    });
+});
 
 // gets list of available bike types
 router.get('/types', (req, res) => {
