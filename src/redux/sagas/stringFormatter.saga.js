@@ -7,7 +7,7 @@ function* stringFormatter() {
 
 function* formatter(action) {
     let userBikes = action.payload;
-    let string = '';
+    let string = 'You own ';
     if(userBikes.length == 1){
         string += 'a ' + userBikes[0].type + ' bike';
         yield put({type: 'SET_STRING', payload: string});

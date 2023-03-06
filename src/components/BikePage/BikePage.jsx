@@ -73,7 +73,7 @@ function BikePage() {
 
     return(
         <div id="bike-page-elements">
-            <h3 className="bike-page-element">{`You own ${bikeTypeString}.`}</h3>
+            <h3 className="bike-page-element">{`${bikeTypeString}.`}</h3>
             <br></br>
             <select className="bike-page-element" id="bike-add-select" onChange={(event) => setBikeSelected(event.target.value)}>
                 <option value="">Select Bike Type</option>
