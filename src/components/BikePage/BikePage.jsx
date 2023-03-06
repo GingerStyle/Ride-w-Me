@@ -10,8 +10,8 @@ function BikePage() {
     const userBikes = useSelector(store => store.userBikes);
     const bikeTypes = useSelector(store => store.bikeTypes);
     const user = useSelector(store => store.user);
+    const bikeTypeString = useSelector(store => store.bikeTypeString);
     const [bikeSelected, setBikeSelected] = useState('');
-    const [bikeTypeString, setBikeTypeString] = useState('');
     const [addTypeDropdown, setAddTypeDropdown] = useState([]);
 
     useEffect(() => {
@@ -19,27 +19,27 @@ function BikePage() {
         dispatch({type: 'FETCH_BIKE_TYPES'});
         //get the list of bike types that user owns
         dispatch({type: 'FETCH_USER_BIKES'});
-        //call stringFormatter to format the bike types the user owns into a readable string
-        stringFormatter();
+        //filter the bike types to populate the dropdown menu with bikes that the user doesn't own
+        filterBikeTypes();
     }, []);
 
     //function to format the types of bikes that the user owns into a string to display on the DOM
-    const stringFormatter = () => {
-        let string = '';
-        if(userBikes.length == 1){
-            string += 'a ' + userBikes[0].type + ' bike';
-            setBikeTypeString(string);
-        }else if(userBikes.length > 1){
-            for(let i=0; i<userBikes.length; i++){
-                if(i < userBikes.length - 1){
-                    string += userBikes[i].type + ', ';
-                }else if(i == userBikes.length - 1){
-                    string += 'and ' + userBikes[i].type + ' bikes';
-                    setBikeTypeString(string);
-        };
-        }};
-        filterBikeTypes();
-    }
+    // const stringFormatter = () => {
+    //     let string = '';
+    //     if(userBikes.length == 1){
+    //         string += 'a ' + userBikes[0].type + ' bike';
+    //         setBikeTypeString(string);
+    //     }else if(userBikes.length > 1){
+    //         for(let i=0; i<userBikes.length; i++){
+    //             if(i < userBikes.length - 1){
+    //                 string += userBikes[i].type + ', ';
+    //             }else if(i == userBikes.length - 1){
+    //                 string += 'and ' + userBikes[i].type + ' bikes';
+    //                 setBikeTypeString(string);
+    //     };
+    //     }};
+    //     filterBikeTypes();
+    // }
 
     //function to handle what happens when the Add Bike Type button is clicked
     const handleAddBike = () => {

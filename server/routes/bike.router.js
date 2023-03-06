@@ -14,6 +14,18 @@ router.get('/userBikes', (req, res) => {
     });
 });
 
+// get list of bikes that the user doesn't own
+router.get('/notUserBikes', (req,res) => {
+    let queryText = `SELECT "type" FROM "bike" WHERE "user_id" != $1`;
+    pool.query(queryText, [req.user.id])
+    .then((response) => {
+        res.send(response.rows);
+    }).catch((error) => {
+        console.log('error getting not user bike list', error);
+        res.sendStatus(500);
+    })
+})
+
 // gets list of available bike types
 router.get('/types', (req, res) => {
     let queryText = 'SELECT * FROM "bike_types";';

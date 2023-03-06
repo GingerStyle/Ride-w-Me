@@ -6,6 +6,7 @@ import userBikes from './fetchUserBikes.saga';
 import bikeTypes from './fetchBikeTypes.saga';
 import addBikeType from './addBikeToUser.saga';
 import removeBikeType from './removeBikeFromUser.saga';
+import stringFormatter from './stringFormatter.saga';
 
 
 // rootSaga is the primary saga.
@@ -24,5 +25,6 @@ export default function* rootSaga() {
     bikeTypes(),
     addBikeType(),
     removeBikeType(),
+    stringFormatter(),
   ]);
 }
