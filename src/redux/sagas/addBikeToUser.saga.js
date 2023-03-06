@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { takeEvery } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 
 function* addBikeTypeToUser() {
     yield takeEvery('ADD_BIKE_TO_USER', addBike)
@@ -8,6 +8,7 @@ function* addBikeTypeToUser() {
 function* addBike(action){
     try{
         yield axios.post('/api/bike/addType', action.payload);
+        yield put({type: 'FETCH_USER_BIKES'});
     }catch (error){
         console.log('error in addBikeTypeToUser', error);
     }
