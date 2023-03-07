@@ -23,24 +23,6 @@ function BikePage() {
         filterBikeTypes();
     }, []);
 
-    //function to format the types of bikes that the user owns into a string to display on the DOM
-    // const stringFormatter = () => {
-    //     let string = '';
-    //     if(userBikes.length == 1){
-    //         string += 'a ' + userBikes[0].type + ' bike';
-    //         setBikeTypeString(string);
-    //     }else if(userBikes.length > 1){
-    //         for(let i=0; i<userBikes.length; i++){
-    //             if(i < userBikes.length - 1){
-    //                 string += userBikes[i].type + ', ';
-    //             }else if(i == userBikes.length - 1){
-    //                 string += 'and ' + userBikes[i].type + ' bikes';
-    //                 setBikeTypeString(string);
-    //     };
-    //     }};
-    //     filterBikeTypes();
-    // }
-
     //function to handle what happens when the Add Bike Type button is clicked
     const handleAddBike = () => {
         if (bikeSelected != ""){
@@ -61,6 +43,7 @@ function BikePage() {
         stringFormatter();
     }
 
+    //function to filter out the bike types the user owns from the types available
     const filterBikeTypes = () => {
         let array = bikeTypes.filter((bike) => {
             return !userBikes.find((value) => {

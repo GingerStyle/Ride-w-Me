@@ -18,15 +18,18 @@ function UserPage() {
     dispatch({type: 'FETCH_USER_BIKES'});
   }, []);
 
+  //function that handles what happens when the submit button to edit the phone number is clicked
   const handlePhoneSubmit = () => {
+    dispatch({type: 'UPDATE_PHONE', payload: {phone: phone}});
     togglePhoneInput();
   }
 
+  //function that handles what happens when the submit button to edit the email is clicked
   const handleEmailSubmit = () => {
     if (email == ''){
       alert('an email address is required');
     }else{
-
+      dispatch({type: 'UPDATE_EMAIL', payload: {email: email}});
       toggleEmailInput();
     }
   }
@@ -62,6 +65,7 @@ function UserPage() {
         {'Dates Available: '}
       </div>
 
+      <br></br>
       <LogOutButton className="btn" />
     </div>
   );

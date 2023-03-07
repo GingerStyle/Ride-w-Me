@@ -7,6 +7,8 @@ import bikeTypes from './fetchBikeTypes.saga';
 import addBikeType from './addBikeToUser.saga';
 import removeBikeType from './removeBikeFromUser.saga';
 import stringFormatter from './stringFormatter.saga';
+import updateEmail from './updateEmail.saga';
+import updatePhone from './updatePhone.saga';
 
 
 // rootSaga is the primary saga.
@@ -18,7 +20,7 @@ import stringFormatter from './stringFormatter.saga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    loginSaga(), // login saga is now registered
+    loginSaga(),
     registrationSaga(),
     userSaga(),
     userBikes(),
@@ -26,5 +28,7 @@ export default function* rootSaga() {
     addBikeType(),
     removeBikeType(),
     stringFormatter(),
+    updateEmail(),
+    updatePhone(),
   ]);
 }
