@@ -111,11 +111,11 @@ function App() {
             }
           </Route>
 
-          <Route 
+          <ProtectedRoute 
             exact 
             path='/bike'>
             <BikePage />
-          </Route>
+          </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
