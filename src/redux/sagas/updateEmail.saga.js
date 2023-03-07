@@ -7,7 +7,7 @@ function* updateEmail() {
 
 function* update(action) {
     try{
-        yield axios.put('/', action.payload)
+        yield axios.put(`/api/bike/updateEmail/${action.payload.email}`);
         yield put({type: 'FETCH_USER'});
     }catch (error) {
         console.log('error in email update axios request', error);
