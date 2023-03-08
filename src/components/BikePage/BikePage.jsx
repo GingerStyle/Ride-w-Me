@@ -9,18 +9,18 @@ function BikePage() {
     const history = useHistory();
     const userBikes = useSelector(store => store.userBikes);
     const bikeTypes = useSelector(store => store.bikeTypes);
+    const filteredBikes = useSelector(store => store.filteredBikes)
     const user = useSelector(store => store.user);
     const bikeTypeString = useSelector(store => store.bikeTypeString);
     const [bikeSelected, setBikeSelected] = useState('');
-    const [addTypeDropdown, setAddTypeDropdown] = useState([]);
 
     useEffect(() => {
-        //get the list of available bike types
-        dispatch({type: 'FETCH_BIKE_TYPES'});
-        //get the list of bike types that user owns
-        dispatch({type: 'FETCH_USER_BIKES'});
-        //filter the bike types to populate the dropdown menu with bikes that the user doesn't own
-        filterBikeTypes();
+        // //get the list of available bike types
+        // dispatch({type: 'FETCH_BIKE_TYPES'});
+        // //get the list of bike types that user owns
+        // dispatch({type: 'FETCH_USER_BIKES'});
+        //filter bike types to get what the user doesn't own to populate the bike-add-select dropdown box
+        dispatch({type: 'GET_BIKE_PAGE_INFO', payload: {userArray: userBikes, typeArray: bikeTypes}});
     }, []);
 
     //function to handle what happens when the Add Bike Type button is clicked
@@ -30,7 +30,6 @@ function BikePage() {
         } else {
             alert('Please select a bike to add.');
         };
-        stringFormatter();
     }
 
     //function to handle what happens when the Remove Bike Type button is clicked
@@ -40,18 +39,20 @@ function BikePage() {
         } else {
             alert('Please select a bike to remove.');
         };
-        stringFormatter();
     }
 
     //function to filter out the bike types the user owns from the types available
-    const filterBikeTypes = () => {
-        let array = bikeTypes.filter((bike) => {
-            return !userBikes.find((value) => {
-                return bike === value
-            });
-        });
-        console.log('array contains', array);
-    }
+    // const filterBikeTypes = () => {
+    //     console.log('bikeTypes contains', bikeTypes);
+    //     console.log('userBikes contains', userBikes);
+    //     let array = bikeTypes.filter((bike) => {
+    //         return !userBikes.find((value) => {
+    //             return bike === value
+    //         });
+    //     });
+    //     setAddTypeDropdown(array);
+    //     console.log('setAddTypeDropdown contains', setAddTypeDropdown);
+    // }
     
 
     return(
@@ -60,7 +61,7 @@ function BikePage() {
             <br></br>
             <select className="bike-page-element" id="bike-add-select" onChange={(event) => setBikeSelected(event.target.value)}>
                 <option value="">Select Bike Type</option>
-                {addTypeDropdown.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
+                {filteredBikes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
             </select>
             <button className="bike-page-element" onClick={() => handleAddBike()}>Add Bike Type</button>
             <br></br>

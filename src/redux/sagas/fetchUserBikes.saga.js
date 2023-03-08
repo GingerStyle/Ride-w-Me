@@ -8,7 +8,7 @@ function* userBikes() {
         //save the list in a reducer
         yield put({type: 'SET_BIKES', payload: bikes.data});
         //update the string with the user's bikes
-        yield put ({type: 'FORMAT_STRING', payload: bikes.data});
+        yield put({type: 'FORMAT_STRING', payload: bikes.data});
     }catch (error){
         console.log('error in fetchUserBikes', error);
     }

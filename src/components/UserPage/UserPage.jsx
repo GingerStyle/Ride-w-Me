@@ -59,7 +59,7 @@ function UserPage() {
         {toggleEmail ?
           <>{user.email} <button onClick={toggleEmailInput}>Edit</button></>
         :
-        <><input onChange={(event) => setEmail(event.target.value)}></input> <button onClick={handleEmailSubmit}>Submit</button></>
+        <><input required type="email" onChange={(event) => setEmail(event.target.value)}></input> <button onClick={handleEmailSubmit}>Submit</button></>
         }
         <br></br>
         {'Dates Available: '}

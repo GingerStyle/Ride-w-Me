@@ -4,6 +4,7 @@ import user from './user.reducer';
 import userBikes from './userBikes.reducer';
 import bikeTypes from './bikeTypes.reducer';
 import bikeTypeString from './bikeTypeString.reducer';
+import filteredBikes from './filteredBikes.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   userBikes, //contains a list of the types of bikes that the user owns
   bikeTypes, //contains list of all types of bikes available
   bikeTypeString, //contains the string to show user's bike types
+  filteredBikes, //contains a list of bike types that the user doesn't own
 });
 
 export default rootReducer;

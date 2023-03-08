@@ -30,6 +30,10 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    //get the list of available bike types
+    dispatch({type: 'FETCH_BIKE_TYPES'});
+    //get the list of bike types that user owns
+    dispatch({type: 'FETCH_USER_BIKES'});
   }, [dispatch]);
 
   return (
