@@ -1,0 +1,12 @@
+#availability-page-elements {
+    display: inline-block;
+    padding: 10px 20px;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+}
+
+.availability-page-element {
+    display: block;
+    margin: auto;
+}
