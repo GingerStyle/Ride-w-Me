@@ -37,8 +37,6 @@ function BikePage() {
 
     //function to filter out the bike types the user owns from the types available
     const filterBikeTypes = () => {
-        console.log('bikeTypes contains', bikeTypes);
-        console.log('userBikes contains', userBikes);
         let array = bikeTypes.filter((bike) => {
             return !userBikes.find((value) => {
                 return bike.type === value.type
