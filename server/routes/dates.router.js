@@ -2,7 +2,17 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//gets list of dates that the user is available
+//gets list of dates that the user is available to ride
+router.get('/get', (req, res) => {
+    let queryText = `SELECT * FROM "dates" WHERE "user_id"=$1;`;
+    pool.query(queryText, [req.user.id])
+    .then((response) => {
+        res.send(response.rows);
+    }).catch((error) => {
+        console.log('error getting dates from DB', error);
+        res.sendStatus(500);
+    });
+});
 
 //posts new dates that user adds to the database
 router.post('/add', (req, res) => {

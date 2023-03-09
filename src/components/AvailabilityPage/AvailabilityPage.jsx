@@ -7,9 +7,10 @@ function AvailabilityPage(){
     const history = useHistory();
     const dispatch = useDispatch();
     const [selectedDate, setSelectedDate] = useState('');
+    const dates = useSelector(store => store.datesAvailable);
 
     useEffect(() => {
-        
+        dispatch({type: 'GET_DATES'});
     }, []);
 
     //function to handle what happens when the user clicks the Add Date button.
