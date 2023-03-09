@@ -10,6 +10,7 @@ import stringFormatter from './stringFormatter.saga';
 import updateEmail from './updateEmail.saga';
 import updatePhone from './updatePhone.saga';
 import bikePageInfo from './bikePageInfo.saga';
+import datesAvailable from './datesAvailable.saga';
 
 
 // rootSaga is the primary saga.
@@ -32,5 +33,6 @@ export default function* rootSaga() {
     updateEmail(),
     updatePhone(),
     bikePageInfo(),
+    datesAvailable(),
   ]);
 }

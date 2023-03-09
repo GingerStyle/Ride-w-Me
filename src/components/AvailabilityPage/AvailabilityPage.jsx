@@ -7,17 +7,10 @@ function AvailabilityPage(){
     const history = useHistory();
     const dispatch = useDispatch();
     const [selectedDate, setSelectedDate] = useState('');
-    const [todaysDate, setTodaysDate] = useState('');
 
     useEffect(() => {
-        // getTodaysDate();
+        
     }, []);
-
-    //function to get today's date
-    const getTodaysDate = () => {
-        setTodaysDate(new Date().toJSON().slice(0, 10));
-        console.log('todaysDate contains:', todaysDate);
-    }
 
     //function to handle what happens when the user clicks the Add Date button.
     const handleAddDate = () => {
@@ -27,7 +20,6 @@ function AvailabilityPage(){
         }else{
             alert('Please select a date.');
         }
-        
     }
 
     return(
@@ -36,9 +28,8 @@ function AvailabilityPage(){
             <label className='availability-page-element'>Click Here:
                 <input
                 type="date"
-                // className='availability-page-element'
+                className='availability-page-element'
                 min={new Date().toJSON().slice(0, 10)}
-                max=''
                 onChange={(event) => setSelectedDate(event.target.value)}>
                 </input>
             </label>
