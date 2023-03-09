@@ -9,17 +9,11 @@ function BikePage() {
     const history = useHistory();
     const userBikes = useSelector(store => store.userBikes);
     const bikeTypes = useSelector(store => store.bikeTypes);
-    const filteredBikes = useSelector(store => store.filteredBikes)
     const user = useSelector(store => store.user);
     const bikeTypeString = useSelector(store => store.bikeTypeString);
     const [bikeSelected, setBikeSelected] = useState('');
 
     useEffect(() => {
-        // //get the list of available bike types
-        // dispatch({type: 'FETCH_BIKE_TYPES'});
-        // //get the list of bike types that user owns
-        // dispatch({type: 'FETCH_USER_BIKES'});
-        //filter bike types to get what the user doesn't own to populate the bike-add-select dropdown box
         dispatch({type: 'GET_BIKE_PAGE_INFO', payload: {userArray: userBikes, typeArray: bikeTypes}});
     }, []);
 
@@ -42,17 +36,16 @@ function BikePage() {
     }
 
     //function to filter out the bike types the user owns from the types available
-    // const filterBikeTypes = () => {
-    //     console.log('bikeTypes contains', bikeTypes);
-    //     console.log('userBikes contains', userBikes);
-    //     let array = bikeTypes.filter((bike) => {
-    //         return !userBikes.find((value) => {
-    //             return bike === value
-    //         });
-    //     });
-    //     setAddTypeDropdown(array);
-    //     console.log('setAddTypeDropdown contains', setAddTypeDropdown);
-    // }
+    const filterBikeTypes = () => {
+        console.log('bikeTypes contains', bikeTypes);
+        console.log('userBikes contains', userBikes);
+        let array = bikeTypes.filter((bike) => {
+            return !userBikes.find((value) => {
+                return bike.type === value.type
+            });
+        });
+        return array;
+    }
     
 
     return(
@@ -61,7 +54,7 @@ function BikePage() {
             <br></br>
             <select className="bike-page-element" id="bike-add-select" onChange={(event) => setBikeSelected(event.target.value)}>
                 <option value="">Select Bike Type</option>
-                {filteredBikes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
+                {filterBikeTypes().map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
             </select>
             <button className="bike-page-element" onClick={() => handleAddBike()}>Add Bike Type</button>
             <br></br>

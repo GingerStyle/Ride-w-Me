@@ -9,7 +9,6 @@ import removeBikeType from './removeBikeFromUser.saga';
 import stringFormatter from './stringFormatter.saga';
 import updateEmail from './updateEmail.saga';
 import updatePhone from './updatePhone.saga';
-import filterBikeTypes from './filterBikeTypes.saga';
 import bikePageInfo from './bikePageInfo.saga';
 
 
@@ -32,7 +31,6 @@ export default function* rootSaga() {
     stringFormatter(),
     updateEmail(),
     updatePhone(),
-    filterBikeTypes(),
     bikePageInfo(),
   ]);
 }
