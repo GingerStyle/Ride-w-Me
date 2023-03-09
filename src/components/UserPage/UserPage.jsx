@@ -62,11 +62,11 @@ function UserPage() {
         <><input required type="email" onChange={(event) => setEmail(event.target.value)}></input> <button onClick={handleEmailSubmit}>Submit</button></>
         }
         <br></br>
-        {'Dates Available: '}
+        <br></br>
+        <button onClick={() => history.push()}>Availability</button> <button onClick={() => history.push('/search')}>Search for Rides</button>
+        
       </div>
-
       <br></br>
-      <LogOutButton className="btn" />
     </div>
   );
 }
