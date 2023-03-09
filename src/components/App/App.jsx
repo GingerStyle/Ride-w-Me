@@ -15,11 +15,12 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../SearchPage/SearchPage';
+import SearchPage from '../SearchPage/SearchPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import BikePage from '../BikePage/BikePage';
+import AvailabilityPage from '../AvailabilityPage/AvailabilityPage';
 
 import './App.css';
 
@@ -66,11 +67,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows SearchPage else shows LoginPage
             exact
             path="/search"
           >
-            <InfoPage />
+            <SearchPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows AvailabilityPage else shows LoginPage
+            exact
+            path="/availability"
+          >
+            <AvailabilityPage />
           </ProtectedRoute>
 
           <Route

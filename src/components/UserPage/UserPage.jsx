@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -63,7 +62,7 @@ function UserPage() {
         }
         <br></br>
         <br></br>
-        <button onClick={() => history.push()}>Availability</button> <button onClick={() => history.push('/search')}>Search for Rides</button>
+        <button onClick={() => history.push('/availability')}>Availability</button> <button onClick={() => history.push('/search')}>Search for Rides</button>
         
       </div>
       <br></br>
