@@ -11,6 +11,7 @@ function* datesAvailable() {
 function* postDate(action) {
     try{
         yield axios.post('/api/dates/add', {date: action.payload});
+        yield put({type: 'GET_DATES'});
     }catch (error){
         console.log('error in datesAvailable', error);
     }
