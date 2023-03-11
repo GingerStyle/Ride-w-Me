@@ -54,15 +54,15 @@ function BikePage() {
                 <option value="">Select Bike Type</option>
                 {filterBikeTypes().map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
             </select>
-            <button className="bike-page-element" onClick={() => handleAddBike()}>Add Bike Type</button>
+            <button className="bike-page-element btn" onClick={() => handleAddBike()}>Add Bike Type</button>
             <br></br>
             <select className="bike-page-element" id="bike-remove-select" onChange={(event) => setBikeSelected(event.target.value)}>
                 <option value="">Select Bike Type</option>
                 {userBikes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
             </select>
-            <button className="bike-page-element" onClick={() => handleRemoveBike()}>Remove Bike Type</button>
+            <button className="bike-page-element btn" onClick={() => handleRemoveBike()}>Remove Bike Type</button>
             <br></br>
-            <button className="bike-page-element" onClick={() => history.push('/user')}>Done</button>
+            <button className="bike-page-element btn" onClick={() => history.push('/user')}>Done</button>
         </div>
     );
 }

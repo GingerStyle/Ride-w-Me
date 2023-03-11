@@ -44,13 +44,13 @@ function AvailabilityPage(){
                     onChange={(event) => setSelectedDate(event.target.value)}>
                     </input>
                 </label>
-                <button onClick={() => handleAddDate()}>Add Date</button>
+                <button className="btn" onClick={() => handleAddDate()}>Add Date</button>
             </div>
             <br></br>
-            <button className='availability-page-element' onClick={() => history.push('/user')}>Done</button>
+            <button className="availability-page-element btn" onClick={() => history.push('/user')}>Done</button>
             <br></br>
-            <div className='availability-page-element'>{'You are available: '}
-                {dates.map((date) => <p key={date.id}>{date.date.slice(0, 10)} <button onClick={() => handleDelete(date.id)}>Delete</button></p>)}
+            <div className="availability-page-element">{'You are available: '}
+                {dates.map((date) => <p key={date.id}>{date.date.slice(0, 10)} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
             </div>
         </div>
     );
