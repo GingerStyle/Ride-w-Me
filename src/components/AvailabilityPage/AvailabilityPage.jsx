@@ -33,7 +33,7 @@ function AvailabilityPage(){
     }
 
     return(
-        <div id='availability-page-elements'>
+        <div className="container" id='availability-page-elements'>
             <h3>Add some dates that you want to ride.</h3>
             <div className='availability-page-element'>
                 <label >Click Here:
