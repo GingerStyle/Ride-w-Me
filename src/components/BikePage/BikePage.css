@@ -1,12 +1,5 @@
-#bike-page-elements {
-    display: inline-block;
-    padding: 10px 20px;
-    align-items: center;
-    margin: auto;
-    width: 100%;
-}
-
-.bike-page-element {
-    display: block;
-    margin: auto;
-}
+.bike-done-btn {
+    margin: 0;
+    position: relative;
+    left: 40%;
+  }

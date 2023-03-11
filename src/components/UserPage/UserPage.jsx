@@ -44,6 +44,7 @@ function UserPage() {
 
   return (
     <div className="container">
+      
       <h2>Welcome, {user.username}!</h2>
       <div>
         {bikeTypeString}. <button className="btn" onClick={() => history.push('/bike')}>Edit</button>
@@ -63,10 +64,9 @@ function UserPage() {
         }
         <br></br>
         <br></br>
-        <button className="btn" onClick={() => history.push('/availability')}>Availability</button> <button className="btn" onClick={() => history.push('/search')}>Search for Rides</button>
-        
+        <button className="btn-group btn" onClick={() => history.push('/availability')}>Availability</button>{' '}
+        <button className="btn-group btn" onClick={() => history.push('/search')}>Search for Rides</button>
       </div>
-      <br></br>
     </div>
   );
 }

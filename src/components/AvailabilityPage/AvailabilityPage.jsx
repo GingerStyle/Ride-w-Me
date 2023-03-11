@@ -33,9 +33,9 @@ function AvailabilityPage(){
     }
 
     return(
-        <div className="container" id='availability-page-elements'>
-            <h3>Add some dates that you want to ride.</h3>
-            <div className='availability-page-element'>
+        <div>
+            <div className="add-date-container">
+                <h3>Add some dates that you want to ride.</h3>
                 <label >Click Here:
                     <input
                     type="date"
@@ -45,11 +45,13 @@ function AvailabilityPage(){
                     </input>
                 </label>
                 <button className="btn" onClick={() => handleAddDate()}>Add Date</button>
+                <br></br>
+                <br></br>
+                <button className="availability-done-btn btn" onClick={() => history.push('/user')}>Done</button>
             </div>
             <br></br>
-            <button className="availability-page-element btn" onClick={() => history.push('/user')}>Done</button>
-            <br></br>
-            <div className="availability-page-element">{'You are available: '}
+            <div className="availability-container">
+                <h3>You are available:</h3>
                 {dates.map((date) => <p key={date.id}>{date.date.slice(0, 10)} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
             </div>
         </div>

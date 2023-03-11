@@ -1,0 +1,27 @@
+.inputs-container {
+  display: inline-block;
+  max-width: 100%;
+  padding: 20px;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 10px;
+  border-color: #0A0;
+  background-color: #AF5;
+}
+
+.table-container {
+  display: inline-block;
+  max-width: 100%;
+  padding: 20px;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 10px;
+  border-color: #0A0;
+  background-color: #AF5;
+}
+
+.search-btn {
+    margin: 0;
+    position: relative;
+    left: 20%;
+  }
