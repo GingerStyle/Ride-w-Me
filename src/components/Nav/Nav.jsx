@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import { FaHome, FaSearch, FaInfoCircle} from 'react-icons/fa';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -25,11 +26,11 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/user">
-              Home
+              <FaHome />
             </Link>
 
             <Link className="navLink" to="/search">
-              Search
+              <FaSearch/>
             </Link>
 
             <LogOutButton className="navLink" />
@@ -37,7 +38,7 @@ function Nav() {
         )}
 
         <Link className="navLink" to="/about">
-          About
+          <FaInfoCircle/>
         </Link>
       </div>
     </div>

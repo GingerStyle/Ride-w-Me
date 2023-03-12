@@ -7,7 +7,7 @@ import React from 'react';
 
 function AboutPage() {
   return (
-    <div className="container">
+    <div className="content-container">
       <div>
         <p>Ride w/ Me is a student solo project by Myles Voigt for Prime Digital Academy. 
           It solves the problem that myself and many people I know that ride bikes face; 
