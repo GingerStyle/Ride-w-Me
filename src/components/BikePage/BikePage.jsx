@@ -56,6 +56,7 @@ function BikePage() {
             </select>
             <button className="btn" onClick={() => handleAddBike()}>Add Bike Type</button>
             <br></br>
+            <br></br>
             <select id="bike-remove-select" onChange={(event) => setBikeSelected(event.target.value)}>
                 <option value="">Select Bike Type</option>
                 {userBikes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}

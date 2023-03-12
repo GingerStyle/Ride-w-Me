@@ -5,6 +5,7 @@ import userBikes from './userBikes.reducer';
 import bikeTypes from './bikeTypes.reducer';
 import bikeTypeString from './bikeTypeString.reducer';
 import datesAvailable from './datesAvailable.reducer';
+import searchResults from './searchResults.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   bikeTypes, //contains list of all types of bikes available
   bikeTypeString, //contains the string to show user's bike types
   datesAvailable, //contains list of dates that the user is available to ride
+  searchResults, //contains the search results on the SearchPage
 });
 
 export default rootReducer;

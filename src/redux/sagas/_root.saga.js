@@ -11,6 +11,7 @@ import updateEmail from './updateEmail.saga';
 import updatePhone from './updatePhone.saga';
 import bikePageInfo from './bikePageInfo.saga';
 import datesAvailable from './datesAvailable.saga';
+import searchResults from './searchResults.saga';
 
 
 // rootSaga is the primary saga.
@@ -34,5 +35,6 @@ export default function* rootSaga() {
     updatePhone(),
     bikePageInfo(),
     datesAvailable(),
+    searchResults(),
   ]);
 }
