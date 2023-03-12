@@ -47,7 +47,8 @@ function BikePage() {
     
 
     return(
-        <div className="container">
+        <div className="bike-page-container">
+            <div className="content-container">
             <h3>{`${bikeTypeString}.`}</h3>
             <br></br>
             <select id="bike-add-select" onChange={(event) => setBikeSelected(event.target.value)}>
@@ -65,6 +66,7 @@ function BikePage() {
             <br></br>
             <br></br>
             <button className="bike-done-btn btn" onClick={() => history.push('/user')}>Done</button>
+            </div>
         </div>
     );
 }

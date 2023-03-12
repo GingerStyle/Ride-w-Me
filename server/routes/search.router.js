@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
     let queryText = `SELECT "user"."username", "user"."email", "user"."phone", "user"."id" FROM "user"
                     JOIN "bike" ON "user"."id"="bike"."user_id"
                     JOIN "dates" ON "user"."id"="dates"."user_id"
-                    WHERE "bike"."type"='Mountain' AND "dates"."date"='2023-03-30';`;
+                    WHERE "bike"."type"='Mountain' AND "dates"."date"='2023-03-30'
+                    ORDER BY "user"."username";`;
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows);

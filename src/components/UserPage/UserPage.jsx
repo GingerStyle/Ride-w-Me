@@ -43,29 +43,32 @@ function UserPage() {
   }
 
   return (
-    <div className="container">
-      
-      <h2>Welcome, {user.username}!</h2>
-      <div>
-        {bikeTypeString}. <button className="btn" onClick={() => history.push('/bike')}>Edit</button>
-        <br></br>
-        {'Phone: '}
-        {togglePhone ?
-          <>{user.phone} <button className="btn" onClick={togglePhoneInput}>Edit</button></>
-        :
-          <><input onChange={(event) => setPhone(event.target.value)}></input> <button onClick={handlePhoneSubmit}>Submit</button></>
-        }
-        <br></br>
-        {'Email: '}
-        {toggleEmail ?
-          <>{user.email} <button className="btn" onClick={toggleEmailInput}>Edit</button></>
-        :
-        <><input required type="email" onChange={(event) => setEmail(event.target.value)}></input> <button onClick={handleEmailSubmit}>Submit</button></>
-        }
-        <br></br>
-        <br></br>
-        <button className="btn-group btn" onClick={() => history.push('/availability')}>Availability</button>{' '}
-        <button className="btn-group btn" onClick={() => history.push('/search')}>Search for Rides</button>
+    <div className="user-page-container">
+      <div className="content-container">
+        <h2>Welcome, {user.username}!</h2>
+        <div>
+          {bikeTypeString}. <button className="btn" onClick={() => history.push('/bike')}>Edit</button>
+          <br></br>
+          {'Phone: '}
+          {togglePhone ?
+            <>{user.phone} <button className="btn" onClick={togglePhoneInput}>Edit</button></>
+          :
+            <><input onChange={(event) => setPhone(event.target.value)}></input> 
+            <button className="btn" onClick={handlePhoneSubmit}>Submit</button></>
+          }
+          <br></br>
+          {'Email: '}
+          {toggleEmail ?
+            <>{user.email} <button className="btn" onClick={toggleEmailInput}>Edit</button></>
+          :
+          <><input required type="email" onChange={(event) => setEmail(event.target.value)}></input> 
+          <button className="btn" onClick={handleEmailSubmit}>Submit</button></>
+          }
+          <br></br>
+          <br></br>
+          <button className="btn-group btn" onClick={() => history.push('/availability')}>Availability</button>{' '}
+          <button className="btn-group btn" onClick={() => history.push('/search')}>Search for Rides</button>
+        </div>
       </div>
     </div>
   );

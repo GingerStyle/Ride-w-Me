@@ -26,7 +26,7 @@ img {
 Container
 -------------------------------------------------------------------------------- */
 
-.container {
+.content-container {
   display: inline-block;
   max-width: 100%;
   padding: 20px;
@@ -48,8 +48,8 @@ Button
   border-color: #0A0;
   border-width: 2px 2px 3px;
   border-radius: 4px;
-  background-color: #AF5;
-  color: #0A0;
+  background-color: #0A0;
+  color: #Af5;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -71,9 +71,9 @@ Button
 }
 
 .btn:hover {
-  background-color: #0A0;
+  background-color: #AF5;
   text-decoration: none;
-  color: #AF5;
+  color: #0A0;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */

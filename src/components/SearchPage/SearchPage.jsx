@@ -6,8 +6,9 @@ function SearchPage() {
   const dispatch = useDispatch();
   const [selectedDate, setSelectedDate] = useState('');
   const [bikeSelected, setBikeSelected] = useState('');
-  const bikeTypes = useSelector(store => store.bikeTypes);
   const [today, setToday] = useState(new Date().toJSON().slice(0, 10));
+  const bikeTypes = useSelector(store => store.bikeTypes);
+  const searchResults = useSelector(store => store.searchResults);
 
   useEffect(() => {
     //get the list of available bike types
@@ -26,7 +27,7 @@ function SearchPage() {
   }
 
   return (
-    <div>
+    <div className="search-page-container">
       <div className="inputs-container">
         <h3>Select a date, select a bike type, then search for a ride!</h3>
         <label>Click here to select date:
@@ -52,14 +53,20 @@ function SearchPage() {
       <div className="table-container">
         <table className="result-table">
           <caption>Search Results</caption>
-          <tbody>
+          <thead>
             <tr>
               <th>Name</th>
-              <th>Bikes Owned</th>
               <th>Email</th>
               <th>Phone</th>
             </tr>
-            {}
+          </thead>
+          <tbody>
+            {searchResults.map((result) => 
+            <tr key={result.id}>
+              <td>{result.username}</td>
+              <td>{result.email}</td>
+              <td>{result.phone}</td>
+            </tr>)}
           </tbody>
         </table>
       </div>

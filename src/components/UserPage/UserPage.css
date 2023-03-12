@@ -3,3 +3,10 @@
     position: relative;
     left: 15%;
 }
+
+.user-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
