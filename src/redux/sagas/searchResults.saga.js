@@ -6,8 +6,10 @@ function* searchResults() {
 }
 
 function* getResults(action) {
+    console.log('action.payload contains:', action.payload);
     try{
-        const results = yield axios.get('/api/search', {payload: action.payload});
+        //using a post route to get results for the benefit of sending data through to the server
+        const results = yield axios.post('/api/search', action.payload);
         yield put({type: 'SET_RESULTS', payload: results.data});
     }catch(error) {
         console.log('error in getResults', error);

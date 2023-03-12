@@ -14,11 +14,12 @@ function LandingPage() {
   };
 
   return (
-    <div className="container">
-      <h2>{heading}</h2>
+    <div >
+      
 
       <div className="grid">
         <div className="grid-col grid-col_8">
+          <h2>{heading}</h2>
           <p>
             Do you ride a bike? Do you have friends that ride bikes? 
             Do you ride your bike with those friends as much as you would like, or are you one of the many people that seem to ride by themselves more often than they would like?
