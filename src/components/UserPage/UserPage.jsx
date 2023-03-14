@@ -49,6 +49,7 @@ function UserPage() {
     setToggleEmail(!toggleEmail);
   }
 
+  
   return (
     <div className="user-page-container">
       <div className="content-container">

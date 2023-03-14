@@ -35,6 +35,7 @@ function AvailabilityPage(){
         dispatch({type: 'DELETE_DATE', payload: date});
     }
 
+    
     return(
         <div className="availability-page-container">
             <div className="add-date-container">

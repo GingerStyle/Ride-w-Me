@@ -26,6 +26,7 @@ function SearchPage() {
     }
   }
 
+  
   return (
     <div className="search-page-container">
       <div className="inputs-container">
