@@ -14,12 +14,15 @@ function BikePage() {
     const [bikeSelected, setBikeSelected] = useState('');
 
     useEffect(() => {
+        //get list of bike types that user owns and of bike types available
         dispatch({type: 'GET_BIKE_PAGE_INFO', payload: {userArray: userBikes, typeArray: bikeTypes}});
     }, []);
 
     //function to handle what happens when the Add Bike Type button is clicked
     const handleAddBike = () => {
+        //check to make sure that user has made a selection
         if (bikeSelected != ""){
+            //if user has made a selection, add that bike to their list of bike types
             dispatch({type: 'ADD_BIKE_TO_USER', payload: {bikeType: bikeSelected, userId: user.id}});
         } else {
             alert('Please select a bike to add.');
@@ -28,7 +31,9 @@ function BikePage() {
 
     //function to handle what happens when the Remove Bike Type button is clicked
     const handleRemoveBike = () => {
+        //check to make sure that user has made a selection
         if (bikeSelected != ""){
+            //if user has made a selection, remove that bike to their list of bike types
             dispatch({type: 'REMOVE_BIKE_FROM_USER', payload: {bikeType: bikeSelected, userId: user.id}});
         } else {
             alert('Please select a bike to remove.');
@@ -36,6 +41,7 @@ function BikePage() {
     }
 
     //function to filter out the bike types the user owns from the types available
+    //returns an array of bike types that the user doesn't own
     const filterBikeTypes = () => {
         let array = bikeTypes.filter((bike) => {
             return !userBikes.find((value) => {

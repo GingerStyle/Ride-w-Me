@@ -11,16 +11,18 @@ function AvailabilityPage(){
     const [today, setToday] = useState(new Date().toJSON().slice(0, 10));
 
     useEffect(() => {
-        //delete old dates
+        //delete old dates to save database storeage space requirements
         dispatch({type: 'DELETE_OLD_DATES', payload: today});
-        //get dates available
+        //get dates that user is available
         dispatch({type: 'GET_DATES'});
     }, []);
 
     //function to handle what happens when the user clicks the Add Date button.
     const handleAddDate = () => {
         if (selectedDate != ''){
+            //post new date to database
             dispatch({type: 'POST_DATE', payload: selectedDate});
+            //refresh list of dates available
             dispatch({type: 'GET_DATES'});
         }else{
             alert('Please select a date.');
@@ -29,6 +31,7 @@ function AvailabilityPage(){
 
     //function to delete date from database when Delete button is clicked
     const handleDelete = (date) => {
+        //remove date from database
         dispatch({type: 'DELETE_DATE', payload: date});
     }
 

@@ -20,24 +20,31 @@ function UserPage() {
 
   //function that handles what happens when the submit button to edit the phone number is clicked
   const handlePhoneSubmit = () => {
+    //update user phone number in the database
     dispatch({type: 'UPDATE_PHONE', payload: {phone: phone}});
+    //change DOM to show the new phone number and edit button
     togglePhoneInput();
   }
 
   //function that handles what happens when the submit button to edit the email is clicked
   const handleEmailSubmit = () => {
+    //check to make sure the email field isn't empty
     if (email == ''){
       alert('an email address is required');
     }else{
+      //update user email in the database
       dispatch({type: 'UPDATE_EMAIL', payload: {email: email}});
+      //change DOM to show the new email and edit button
       toggleEmailInput();
     }
   }
 
+  //toggles the value of the togglePhone variable
   const togglePhoneInput = () => {
     setTogglePhone(!togglePhone);
   }
 
+  //toggles the value of the toggleEmail variable
   const toggleEmailInput = () => {
     setToggleEmail(!toggleEmail);
   }
@@ -82,5 +89,4 @@ function UserPage() {
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;
