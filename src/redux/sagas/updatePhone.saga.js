@@ -7,7 +7,7 @@ function* updatePhone() {
 
 function* update(action) {
     try{
-        yield axios.put(`/api/bike/updatePhone/${action.payload.phone}`)
+        yield axios.put(`/api/user/updatePhone/${action.payload.phone}`)
         yield put({type: 'FETCH_USER'});
     }catch (error) {
         console.log('error in phone update axios request', error);

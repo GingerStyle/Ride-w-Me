@@ -70,7 +70,6 @@ function SearchPage() {
           </tbody>
         </table>
       </div>
-      
     </div>
   );
 }

@@ -48,28 +48,4 @@ router.delete('/removeType/:id', (req, res) => {
     });
 });
 
-// updates phone number in user page
-router.put('/updatePhone/:id', (req, res) => {
-    let queryText = `UPDATE "user" SET "phone"=$1 WHERE "id"=$2;`;
-    pool.query(queryText, [req.params.id, req.user.id])
-    .then(() => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        console.log('error in the updatePhone router put request', error);
-        res.sendStatus(500);
-    });
-});
-
-// updates email in user page
-router.put('/updateEmail/:id', (req, res) => {
-    let queryText = `UPDATE "user" SET "email"=$1 WHERE "id"=$2;`;
-    pool.query(queryText, [req.params.id, req.user.id])
-    .then(() => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        console.log('error in the updateEmail router put request', error);
-        res.sendStatus(500);
-    });
-});
-
 module.exports = router;
