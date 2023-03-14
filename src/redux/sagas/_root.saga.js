@@ -2,16 +2,13 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
-import userBikes from './fetchUserBikes.saga';
-import bikeTypes from './fetchBikeTypes.saga';
-import addBikeType from './addBikeToUser.saga';
-import removeBikeType from './removeBikeFromUser.saga';
 import stringFormatter from './stringFormatter.saga';
 import updateEmail from './updateEmail.saga';
 import updatePhone from './updatePhone.saga';
 import bikePageInfo from './bikePageInfo.saga';
 import datesAvailable from './datesAvailable.saga';
 import searchResults from './searchResults.saga';
+import bikesSaga from './bikes.saga';
 
 
 // rootSaga is the primary saga.
@@ -26,15 +23,12 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    userBikes(),
-    bikeTypes(),
-    addBikeType(),
-    removeBikeType(),
     stringFormatter(),
     updateEmail(),
     updatePhone(),
     bikePageInfo(),
     datesAvailable(),
     searchResults(),
+    bikesSaga(),
   ]);
 }
