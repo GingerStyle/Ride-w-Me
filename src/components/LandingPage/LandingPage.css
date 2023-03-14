@@ -9,8 +9,9 @@ Grid
   flex-direction: row;
   flex-wrap: wrap;
   /* defaults to 'flex-start' */
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-around;
+  align-items: center;
+  
 }
 
 .grid-col {
@@ -35,13 +36,16 @@ Grid
 }
 
 .grid-col_4 {
-  flex-basis: 33.33333333%;
+  display: flex;
+  flex: 0 0 auto;
+  /* flex-basis: 33.33333333%; */
   max-width: 33.33333333%;
   border-style: solid;
   border-width: 5px;
   border-radius: 10px;
   border-color: #0A0;
   background-color: lightgrey;
+  justify-content: space-around;
 }
 
 .grid-col_5 {
@@ -60,13 +64,17 @@ Grid
 }
 
 .grid-col_8 {
-  flex-basis: 66.66666667%;
-  max-width: 66.66666667%;
+  display: flex;
+  flex-direction: column;
+  flex: 0 3 auto;
+  /* flex-basis: 66.666667%; */
+  max-width: 50%;
   border-style: solid;
   border-width: 5px;
   border-radius: 10px;
   border-color: #0A0;
   background-color: lightgrey;
+  justify-content: space-between;
 }
 
 .grid-col_9 {

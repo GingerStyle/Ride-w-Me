@@ -5,8 +5,12 @@
   align-items: center;
 }
 
-.bike-done-btn {
-    margin: 0;
-    position: relative;
-    left: 40%;
-  }
+h3 {
+  text-align: center;
+}
+
+.bike-page-controls {
+  margin: 0;
+  position: relative;
+  text-align: center;
+}

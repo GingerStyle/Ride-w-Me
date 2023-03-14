@@ -47,6 +47,11 @@ function UserPage() {
       <div className="content-container">
         <h2>Welcome, {user.username}!</h2>
         <div>
+          <div className="btn-group">
+            <button className=" btn" onClick={() => history.push('/availability')}>Availability</button>{' '}
+            <button className=" btn" onClick={() => history.push('/search')}>Search for Rides</button>
+          </div>
+          <br></br>
           {bikeTypeString}. <button className="btn" onClick={() => history.push('/bike')}>Edit</button>
           <br></br>
           {'Phone: '}
@@ -64,10 +69,6 @@ function UserPage() {
           <><input required type="email" onChange={(event) => setEmail(event.target.value)}></input> 
           <button className="btn" onClick={handleEmailSubmit}>Submit</button></>
           }
-          <br></br>
-          <br></br>
-          <button className="btn-group btn" onClick={() => history.push('/availability')}>Availability</button>{' '}
-          <button className="btn-group btn" onClick={() => history.push('/search')}>Search for Rides</button>
         </div>
       </div>
     </div>

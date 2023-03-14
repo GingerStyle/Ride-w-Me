@@ -49,23 +49,25 @@ function BikePage() {
     return(
         <div className="bike-page-container">
             <div className="content-container">
-            <h3>{`${bikeTypeString}.`}</h3>
-            <br></br>
-            <select id="bike-add-select" onChange={(event) => setBikeSelected(event.target.value)}>
-                <option value="">Select Bike Type</option>
-                {filterBikeTypes().map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
-            </select>
-            <button className="btn" onClick={() => handleAddBike()}>Add Bike Type</button>
-            <br></br>
-            <br></br>
-            <select id="bike-remove-select" onChange={(event) => setBikeSelected(event.target.value)}>
-                <option value="">Select Bike Type</option>
-                {userBikes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
-            </select>
-            <button className="btn" onClick={() => handleRemoveBike()}>Remove Bike Type</button>
-            <br></br>
-            <br></br>
-            <button className="bike-done-btn btn" onClick={() => history.push('/user')}>Done</button>
+                <h3>{`${bikeTypeString}.`}</h3>
+                <br></br>
+                <div className="bike-page-controls">
+                    <select id="bike-add-select" onChange={(event) => setBikeSelected(event.target.value)}>
+                        <option value="">Select Bike Type</option>
+                        {filterBikeTypes().map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
+                    </select>
+                    <button className="btn" onClick={() => handleAddBike()}>Add Bike Type</button>
+                    <br></br>
+                    <br></br>
+                    <select id="bike-remove-select" onChange={(event) => setBikeSelected(event.target.value)}>
+                        <option value="">Select Bike Type</option>
+                        {userBikes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
+                    </select>
+                    <button className="btn" onClick={() => handleRemoveBike()}>Remove Bike Type</button>
+                    <br></br>
+                    <br></br>
+                    <button className="bike-done-btn btn" onClick={() => history.push('/user')}>Done</button>
+                </div>
             </div>
         </div>
     );

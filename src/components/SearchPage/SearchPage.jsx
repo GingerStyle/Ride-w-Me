@@ -29,7 +29,7 @@ function SearchPage() {
   return (
     <div className="search-page-container">
       <div className="inputs-container">
-        <h3>Select a date, select a bike type, then search for a ride!</h3>
+        <h3>Select a date and a bike type, then search for a ride!</h3>
         <label>Click here to select date:
           <input type="date"
           min={today}
