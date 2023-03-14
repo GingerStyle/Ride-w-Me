@@ -28,10 +28,10 @@
 }
 
 .search-btn {
-    margin: 0;
-    position: relative;
-    left: 30%;
-  }
+  margin: 0;
+  position: relative;
+  text-align: center;
+}
 
 .result-table {
   border: 1px solid;
@@ -49,4 +49,10 @@ th {
 td {
   border: 2px solid;
   border-color: #0A0;
+}
+
+h3 {
+  margin: 0;
+  position: relative;
+  text-align: center;
 }

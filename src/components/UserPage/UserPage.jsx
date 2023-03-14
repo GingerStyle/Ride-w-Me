@@ -46,14 +46,19 @@ function UserPage() {
     <div className="user-page-container">
       <div className="content-container">
         <h2>Welcome, {user.username}!</h2>
+
         <div>
           <div className="btn-group">
             <button className=" btn" onClick={() => history.push('/availability')}>Availability</button>{' '}
             <button className=" btn" onClick={() => history.push('/search')}>Search for Rides</button>
           </div>
+
           <br></br>
+
           {bikeTypeString}. <button className="btn" onClick={() => history.push('/bike')}>Edit</button>
+
           <br></br>
+
           {'Phone: '}
           {togglePhone ?
             <>{user.phone} <button className="btn" onClick={togglePhoneInput}>Edit</button></>
@@ -61,7 +66,9 @@ function UserPage() {
             <><input onChange={(event) => setPhone(event.target.value)}></input> 
             <button className="btn" onClick={handlePhoneSubmit}>Submit</button></>
           }
+
           <br></br>
+          
           {'Email: '}
           {toggleEmail ?
             <>{user.email} <button className="btn" onClick={toggleEmailInput}>Edit</button></>

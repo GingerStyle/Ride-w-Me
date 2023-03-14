@@ -30,29 +30,39 @@ function SearchPage() {
     <div className="search-page-container">
       <div className="inputs-container">
         <h3>Select a date and a bike type, then search for a ride!</h3>
+        
+        <br></br>
+
         <label>Click here to select date:
           <input type="date"
           min={today}
           onChange={(event) => setSelectedDate(event.target.value)}>
           </input>
         </label>
+
         <br></br>
-        <br></br>
+
         <label>Click here to select bike:
           <select id="bike-search-select" onChange={(event) => setBikeSelected(event.target.value)}>
             <option value="">Select Bike Type</option>
             {bikeTypes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
           </select>
         </label>
-        
+
         <br></br>
         <br></br>
-        <button className="btn search-btn" onClick={() => handleSearchForRides()}>Search For A Ride!</button>
+
+        <div className="search-btn">
+          <button className="btn" onClick={() => handleSearchForRides()}>Search For A Ride!</button>
+        </div>
       </div>
+
       <br></br>
+
       <div className="table-container">
         <table className="result-table">
           <caption>Search Results</caption>
+
           <thead>
             <tr>
               <th>Name</th>
@@ -60,6 +70,7 @@ function SearchPage() {
               <th>Phone</th>
             </tr>
           </thead>
+
           <tbody>
             {searchResults.map((result) => 
             <tr key={result.id}>
