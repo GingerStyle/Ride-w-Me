@@ -17,16 +17,22 @@ function SearchPage() {
 
   //function to handle when the user clicks the Search For A Ride! button
   const handleSearchForRides = () => {
+    //check that user has selected a date
     if(selectedDate == ''){
       alert('Please select a date.');
-    }else if (bikeSelected == ''){
+    }
+    //check that user has selected a bike type
+    else if (bikeSelected == ''){
       alert('Please select a bike type');
-    }else {
+    }
+    //if both are selected
+    else {
+      //get serach results from the database
       dispatch({type: 'GET_SEARCH_RESULTS', payload: {date: selectedDate, bike: bikeSelected}});
     }
   }
 
-  
+
   return (
     <div className="search-page-container">
       <div className="inputs-container">
