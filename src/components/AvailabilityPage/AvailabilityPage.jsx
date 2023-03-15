@@ -44,6 +44,48 @@ function AvailabilityPage(){
         dispatch({type: 'DELETE_DATE', payload: date});
     }
 
+    //function to convert 24 hour time to AM and PM
+    // const timeConvert = (time) => {
+    //     //split the time into an array
+    //     let timeArray = time.split(':');
+    //     //convert first array item (hour) in an integer
+    //     let hours = parseInt(timeArray[0]);
+    //     //store the second item (minutes)
+    //     let minutes = timeArray[1];
+    //     //determine whether it's AM or PM
+    //     let ampm = hours >=12 ? 'PM' : 'AM';
+    //     //convert to 12 hour format
+    //     hours = hours % 12;
+    //     //the hour 0 should be 12
+    //     hours = hours ? hours : 12
+    //     //combine the time into a string
+    //     let timeString = hours + ':' + minutes + ampm;
+    //     return timeString;
+    // }
+
+    //function to format date into month day year, and 24 times into 12 hour times,
+    //save changes and return so they can be displayed with their new formats.
+    const dateTimeFormatter = () => {
+        //create new array to avoid directly mutating state array
+        let formattedArray = dates;
+        console.log('dates contains', dates);
+        //convert date to month/day/year format
+        for (let date of formattedArray){
+            console.log('date.date =', date.date);
+            let stringDate = date.date;
+            console.log('stringDate contains', stringDate);
+            let dateArray = stringDate.split('-');
+            console.log('date array contains:', dateArray);
+            let year = dateArray[0];
+            let month = dateArray[1];
+            let day = dateArray[2];
+            date.date = month + '-' + day + '-' + year;
+        }
+
+        //return new array with formatted dates and times to be mapped over
+        return formattedArray;
+    }
+
     
     return(
         <div className="availability-page-container">
@@ -90,8 +132,8 @@ function AvailabilityPage(){
 
             <div className="availability-container">
                 <h3>You are available:</h3>
-                
-                {dates.map((date) => <p key={date.id}>Date: {date.date.slice(0, 10)} From: {date.fromTime} To: {date.toTime} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
+                {/*this is where you left off. will need to send dates array to function*/}
+                {dateTimeFormatter().map((date) => <p key={date.id}>Date: {date.date} From: {date.fromTime} To: {date.toTime} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
             </div>
         </div>
     );
