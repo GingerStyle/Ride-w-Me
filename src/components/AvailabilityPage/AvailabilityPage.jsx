@@ -9,6 +9,8 @@ function AvailabilityPage(){
     const [selectedDate, setSelectedDate] = useState('');
     const dates = useSelector(store => store.datesAvailable);
     const [today, setToday] = useState(new Date().toJSON().slice(0, 10));
+    const [toTime, setToTime] = useState('');
+    const [fromTime, setFromTime] = useState('');
 
     useEffect(() => {
         //delete old dates to save database storeage space requirements
@@ -19,9 +21,16 @@ function AvailabilityPage(){
 
     //function to handle what happens when the user clicks the Add Date button.
     const handleAddDate = () => {
+        console.log('fromTime contains:', fromTime);
+        console.log('toTime contains:', toTime);
         if (selectedDate != ''){
             //post new date to database
-            dispatch({type: 'POST_DATE', payload: selectedDate});
+            dispatch({type: 'POST_DATE',
+            payload: {date: selectedDate,
+                      fromTime: fromTime,
+                      toTime: toTime
+                    }        
+            });
             //refresh list of dates available
             dispatch({type: 'GET_DATES'});
         }else{
@@ -41,7 +50,9 @@ function AvailabilityPage(){
             <div className="add-date-container">
                 <h3>Add some dates that you want to ride.</h3>
 
-                <label >Click Here:
+                <br></br>
+
+                <label>Click Here:
                     <input
                     type="date"
                     value={selectedDate}
@@ -50,12 +61,29 @@ function AvailabilityPage(){
                     </input>
                 </label>
 
+                <br></br>
+
+                <label>From:
+                    <input type="time" onChange={(event) => setFromTime(event.target.value)}></input>
+                </label>
+
+                <br></br>
+
+                <label>To:
+                    <input type="time" onChange={(event) => setToTime(event.target.value)}></input>
+                </label>
+
+                <br></br>
+
                 <button className="btn" onClick={() => handleAddDate()}>Add Date</button>
 
                 <br></br>
                 <br></br>
 
-                <button className="availability-done-btn btn" onClick={() => history.push('/user')}>Done</button>
+                <div className="availability-done-btn">
+                    <button className="btn" onClick={() => history.push('/user')}>Done</button>
+                </div>
+                
             </div>
 
             <br></br>
@@ -63,7 +91,7 @@ function AvailabilityPage(){
             <div className="availability-container">
                 <h3>You are available:</h3>
                 
-                {dates.map((date) => <p key={date.id}>{date.date.slice(0, 10)} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
+                {dates.map((date) => <p key={date.id}>Date: {date.date.slice(0, 10)} From: {date.fromTime} To: {date.toTime} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
             </div>
         </div>
     );

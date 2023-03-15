@@ -73,6 +73,8 @@ function SearchPage() {
           <thead>
             <tr>
               <th>Name</th>
+              <th>From</th>
+              <th>To</th>
               <th>Email</th>
               <th>Phone</th>
             </tr>
@@ -82,6 +84,8 @@ function SearchPage() {
             {searchResults.map((result) => 
             <tr key={result.id}>
               <td>{result.username}</td>
+              <td>{result.fromTime}</td>
+              <td>{result.toTime}</td>
               <td>{result.email}</td>
               <td>{result.phone}</td>
             </tr>)}

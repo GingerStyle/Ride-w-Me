@@ -16,8 +16,9 @@ router.get('/get', (req, res) => {
 
 //posts new dates that user adds to the database
 router.post('/add', (req, res) => {
-    let queryText = `INSERT INTO "dates" ("date", "user_id") VALUES ($1, $2);`;
-    pool.query(queryText, [req.body.date, req.user.id])
+    console.log('req.body contains:', req.body);
+    let queryText = `INSERT INTO "dates" ("date", "user_id", "fromTime", "toTime") VALUES ($1, $2, $3, $4);`;
+    pool.query(queryText, [req.body.date, req.user.id, req.body.fromTime, req.body.toTime])
     .then(() => {
         res.sendStatus(200);
     }).then((error) => {
