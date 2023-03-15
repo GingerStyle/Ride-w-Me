@@ -63,23 +63,40 @@ function AvailabilityPage(){
     //     return timeString;
     // }
 
-    //function to format date into month day year, and 24 times into 12 hour times,
+    //function to format date into month day year, and 24 hour times into 12 hour times,
     //save changes and return so they can be displayed with their new formats.
     const dateTimeFormatter = () => {
         //create new array to avoid directly mutating state array
         let formattedArray = dates;
-        console.log('dates contains', dates);
         //convert date to month/day/year format
         for (let date of formattedArray){
-            console.log('date.date =', date.date);
             let stringDate = date.date;
-            console.log('stringDate contains', stringDate);
             let dateArray = stringDate.split('-');
-            console.log('date array contains:', dateArray);
             let year = dateArray[0];
             let month = dateArray[1];
             let day = dateArray[2];
             date.date = month + '-' + day + '-' + year;
+            //change format of fromTime to 12 hour with tag of 'From:' and adding AM or PM
+            if (date.fromTime != null) {
+                let time = date.fromTime;
+                let timeArray = time.split(':');
+                let hours = parseInt(timeArray[0]);
+                let minutes = timeArray[1];
+                let ampm = hours >=12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                date.fromTime = 'From: ' + hours + ':' + minutes + ampm;
+            }
+            if (date.toTime != null) {
+                let time = date.toTime;
+                let timeArray = time.split(':');
+                let hours = parseInt(timeArray[0]);
+                let minutes = timeArray[1];
+                let ampm = hours >=12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                date.toTime = 'To: ' + hours + ':' + minutes + ampm;
+            }
         }
 
         //return new array with formatted dates and times to be mapped over
@@ -133,7 +150,7 @@ function AvailabilityPage(){
             <div className="availability-container">
                 <h3>You are available:</h3>
                 {/*this is where you left off. will need to send dates array to function*/}
-                {dateTimeFormatter().map((date) => <p key={date.id}>Date: {date.date} From: {date.fromTime} To: {date.toTime} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
+                {dateTimeFormatter().map((date) => <p key={date.id}>Date: {date.date} {date.fromTime} {date.toTime} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
             </div>
         </div>
     );
