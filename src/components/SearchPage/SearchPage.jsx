@@ -15,6 +15,27 @@ function SearchPage() {
     dispatch({type: 'FETCH_BIKE_TYPES'});
   }, []);
 
+  //function to convert 24 hour time to AM and PM
+  const timeConvert = (time) => {
+    if(time != null){
+      //split the time into an array
+      let timeArray = time.split(':');
+      //convert first array item (hour) in an integer
+      let hours = parseInt(timeArray[0]);
+      //store the second item (minutes)
+      let minutes = timeArray[1];
+      //determine whether it's AM or PM
+      let ampm = hours >=12 ? 'PM' : 'AM';
+      //convert to 12 hour format
+      hours = hours % 12;
+      //the hour 0 should be 12
+      hours = hours ? hours : 12
+      //combine the time into a string
+      let timeString = hours + ':' + minutes + ampm;
+      return timeString;
+    }
+  }
+
   //function to handle when the user clicks the Search For A Ride! button
   const handleSearchForRides = () => {
     //check that user has selected a date
@@ -84,8 +105,8 @@ function SearchPage() {
             {searchResults.map((result) => 
             <tr key={result.id}>
               <td>{result.username}</td>
-              <td>{result.fromTime}</td>
-              <td>{result.toTime}</td>
+              <td>{timeConvert(result.fromTime)}</td>
+              <td>{timeConvert(result.toTime)}</td>
               <td>{result.email}</td>
               <td>{result.phone}</td>
             </tr>)}

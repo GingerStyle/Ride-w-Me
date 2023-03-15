@@ -44,25 +44,6 @@ function AvailabilityPage(){
         dispatch({type: 'DELETE_DATE', payload: date});
     }
 
-    //function to convert 24 hour time to AM and PM
-    // const timeConvert = (time) => {
-    //     //split the time into an array
-    //     let timeArray = time.split(':');
-    //     //convert first array item (hour) in an integer
-    //     let hours = parseInt(timeArray[0]);
-    //     //store the second item (minutes)
-    //     let minutes = timeArray[1];
-    //     //determine whether it's AM or PM
-    //     let ampm = hours >=12 ? 'PM' : 'AM';
-    //     //convert to 12 hour format
-    //     hours = hours % 12;
-    //     //the hour 0 should be 12
-    //     hours = hours ? hours : 12
-    //     //combine the time into a string
-    //     let timeString = hours + ':' + minutes + ampm;
-    //     return timeString;
-    // }
-
     //function to format date into month day year, and 24 hour times into 12 hour times,
     //save changes and return so they can be displayed with their new formats.
     const dateTimeFormatter = () => {
