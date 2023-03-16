@@ -44,44 +44,79 @@ function AvailabilityPage(){
         dispatch({type: 'DELETE_DATE', payload: date});
     }
 
-    //function to format date into month day year, and 24 hour times into 12 hour times,
-    //save changes and return array so it can be displayed with their new formats.
-    const dateTimeFormatter = () => {
-        //create new array to avoid directly mutating state array
-        let formattedArray = dates;
-        //convert date to month/day/year format
-        for (let date of formattedArray){
-            let stringDate = date.date;
-            let dateArray = stringDate.split('-');
-            let year = dateArray[0];
-            let month = dateArray[1];
-            let day = dateArray[2];
-            date.date = month + '-' + day + '-' + year;
-            //change format of fromTime to 12 hour with tag of 'From:' and adding AM or PM
-            if (date.fromTime != null) {
-                let time = date.fromTime;
-                let timeArray = time.split(':');
-                let hours = parseInt(timeArray[0]);
-                let minutes = timeArray[1];
-                let ampm = hours >=12 ? 'PM' : 'AM';
-                hours = hours % 12;
-                hours = hours ? hours : 12;
-                date.fromTime = 'From: ' + hours + ':' + minutes + ampm;
-            }
-            //change format of toTime to 12 hour with tag of 'To:' and adding AM or PM
-            if (date.toTime != null) {
-                let time = date.toTime;
-                let timeArray = time.split(':');
-                let hours = parseInt(timeArray[0]);
-                let minutes = timeArray[1];
-                let ampm = hours >=12 ? 'PM' : 'AM';
-                hours = hours % 12;
-                hours = hours ? hours : 12;
-                date.toTime = 'To: ' + hours + ':' + minutes + ampm;
-            } 
+    // //function to format date into month day year, and 24 hour times into 12 hour times,
+    // //save changes and return array so it can be displayed with their new formats.
+    // const dateTimeFormatter = () => {
+    //     //create new array to avoid directly mutating state array
+    //     let formattedArray = dates;
+    //     //convert date to month/day/year format
+    //     for (let date of formattedArray){
+    //         let stringDate = date.date;
+    //         let dateArray = stringDate.split('-');
+    //         let year = dateArray[0];
+    //         let month = dateArray[1];
+    //         let day = dateArray[2];
+    //         date.date = month + '-' + day + '-' + year;
+    //         //change format of fromTime to 12 hour with tag of 'From:' and adding AM or PM
+    //         if (date.fromTime != null) {
+    //             let time = date.fromTime;
+    //             let timeArray = time.split(':');
+    //             let hours = parseInt(timeArray[0]);
+    //             let minutes = timeArray[1];
+    //             let ampm = hours >=12 ? 'PM' : 'AM';
+    //             hours = hours % 12;
+    //             hours = hours ? hours : 12;
+    //             date.fromTime = 'From: ' + hours + ':' + minutes + ampm;
+    //         }
+    //         //change format of toTime to 12 hour with tag of 'To:' and adding AM or PM
+    //         if (date.toTime != null) {
+    //             let time = date.toTime;
+    //             let timeArray = time.split(':');
+    //             let hours = parseInt(timeArray[0]);
+    //             let minutes = timeArray[1];
+    //             let ampm = hours >=12 ? 'PM' : 'AM';
+    //             hours = hours % 12;
+    //             hours = hours ? hours : 12;
+    //             date.toTime = 'To: ' + hours + ':' + minutes + ampm;
+    //         } 
+    //     }
+    //     //return new array with formatted dates and times to be mapped over
+    //     return formattedArray;
+    // }
+
+    const dateFormatter = (date) => {
+        let dateArray = date.split('-');
+        let year = dateArray[0];
+        let month = dateArray[1];
+        let day = dateArray[2];
+        date = month + '-' + day + '-' + year;
+        return date;
+    }
+
+    const fromTimeFormatter = (time) => {
+        if (time != null) {
+            let timeArray = time.split(':');
+            let hours = parseInt(timeArray[0]);
+            let minutes = timeArray[1];
+            let ampm = hours >=12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            time = 'From: ' + hours + ':' + minutes + ampm;
+            return time;
         }
-        //return new array with formatted dates and times to be mapped over
-        return formattedArray;
+    }
+
+    const toTimeFormatter = (time) => {
+        if (time != null) {
+            let timeArray = time.split(':');
+            let hours = parseInt(timeArray[0]);
+            let minutes = timeArray[1];
+            let ampm = hours >=12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            time = 'To: ' + hours + ':' + minutes + ampm;
+            return time;
+        }
     }
 
     
@@ -131,7 +166,11 @@ function AvailabilityPage(){
             <div className="availability-container">
                 <h3>You are available:</h3>
                
-                {dateTimeFormatter().map((date) => <p key={date.id}>Date: {date.date} {date.fromTime} {date.toTime} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
+                {
+                    dates.map((date) => <p key={date.id}>Date: {dateFormatter(date.date)} {fromTimeFormatter(date.fromTime)} {toTimeFormatter(date.toTime)}
+                    &nbsp;&nbsp;
+                    <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)
+                }
             </div>
         </div>
     );
