@@ -9,7 +9,6 @@ function* datesAvailable() {
 }
 
 function* postDate(action) {
-    console.log('action.payload contains:', action.payload);
     try{
         yield axios.post('/api/dates/add', action.payload);
         yield put({type: 'GET_DATES'});

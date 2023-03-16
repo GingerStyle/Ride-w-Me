@@ -64,6 +64,8 @@ function BikePage() {
                         <option value="">Select Bike Type</option>
                         {filterBikeTypes().map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
                     </select>
+                    
+                    &nbsp;&nbsp;
 
                     <button className="btn" onClick={() => handleAddBike()}>Add Bike Type</button>
 
@@ -74,6 +76,8 @@ function BikePage() {
                         <option value="">Select Bike Type</option>
                         {userBikes.map((type) => <option key={type.id} value={type.type}>{type.type}</option>)}
                     </select>
+
+                    &nbsp;&nbsp;
 
                     <button className="btn" onClick={() => handleRemoveBike()}>Remove Bike Type</button>
 

@@ -45,7 +45,7 @@ function AvailabilityPage(){
     }
 
     //function to format date into month day year, and 24 hour times into 12 hour times,
-    //save changes and return so they can be displayed with their new formats.
+    //save changes and return array so it can be displayed with their new formats.
     const dateTimeFormatter = () => {
         //create new array to avoid directly mutating state array
         let formattedArray = dates;
@@ -68,6 +68,7 @@ function AvailabilityPage(){
                 hours = hours ? hours : 12;
                 date.fromTime = 'From: ' + hours + ':' + minutes + ampm;
             }
+            //change format of toTime to 12 hour with tag of 'To:' and adding AM or PM
             if (date.toTime != null) {
                 let time = date.toTime;
                 let timeArray = time.split(':');
@@ -77,9 +78,8 @@ function AvailabilityPage(){
                 hours = hours % 12;
                 hours = hours ? hours : 12;
                 date.toTime = 'To: ' + hours + ':' + minutes + ampm;
-            }
+            } 
         }
-
         //return new array with formatted dates and times to be mapped over
         return formattedArray;
     }
@@ -88,7 +88,7 @@ function AvailabilityPage(){
     return(
         <div className="availability-page-container">
             <div className="add-date-container">
-                <h3>Add some dates that you want to ride.</h3>
+                <h3>Add some dates that you want to ride!</h3>
 
                 <br></br>
 
@@ -130,7 +130,7 @@ function AvailabilityPage(){
 
             <div className="availability-container">
                 <h3>You are available:</h3>
-                {/*this is where you left off. will need to send dates array to function*/}
+               
                 {dateTimeFormatter().map((date) => <p key={date.id}>Date: {date.date} {date.fromTime} {date.toTime} <button className="btn" onClick={() => handleDelete(date.id)}>Delete</button></p>)}
             </div>
         </div>
