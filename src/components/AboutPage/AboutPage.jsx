@@ -13,6 +13,7 @@ function AboutPage() {
           It solves the problem that myself and many people I know that ride bikes face; 
           working out schedules with your friends without having to always plan something weeks in advance.
           Ride w/ Me allows you to just put your availability out there and search your friends to just go on a ride.
+          Coming to www.wannaridewithme.com soon!
           </p>
       </div>
     </div>

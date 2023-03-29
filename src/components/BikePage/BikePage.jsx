@@ -51,7 +51,6 @@ function BikePage() {
         return array;
     }
     
-    
     return(
         <div className="bike-page-container">
             <div className="content-container">

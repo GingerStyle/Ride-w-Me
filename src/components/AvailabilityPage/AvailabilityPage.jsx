@@ -94,7 +94,7 @@ function AvailabilityPage(){
     }
 
     const fromTimeFormatter = (time) => {
-        if (time != null) {
+        if (time != null || time != '') {
             let timeArray = time.split(':');
             let hours = parseInt(timeArray[0]);
             let minutes = timeArray[1];
@@ -107,7 +107,7 @@ function AvailabilityPage(){
     }
 
     const toTimeFormatter = (time) => {
-        if (time != null) {
+        if (time != null || time != '') {
             let timeArray = time.split(':');
             let hours = parseInt(timeArray[0]);
             let minutes = timeArray[1];
