@@ -73,4 +73,17 @@ router.put('/updateEmail/:id', (req, res) => {
   });
 });
 
+// updates user password
+router.put('/updatePassword', (req, res) => {
+  const password = encryptLib.encryptPassword(req.body.password);
+  let queryText = `UPDATE "user" SET "password"=$1 WHERE "id"=$2`;
+  pool.query(queryText, [password, req.user.id])
+  .then(() => {
+    res.sendStatus(200);
+  }).catch((error) => {
+    console.log('error in the updatePassword router put request');
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;

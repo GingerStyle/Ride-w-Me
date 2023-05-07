@@ -39,6 +39,11 @@ function UserPage() {
     }
   }
 
+  //function to handle when the Change Password button is clicked
+  const changePassword = () => {
+
+  }
+
   //toggles the value of the togglePhone variable
   const togglePhoneInput = () => {
     setTogglePhone(!togglePhone);
@@ -84,6 +89,10 @@ function UserPage() {
           <><input required type="email" onChange={(event) => setEmail(event.target.value)}></input> 
           <button className="btn" onClick={handleEmailSubmit}>Submit</button></>
           }
+
+          <br></br>
+
+          <button className="btn" onClick={() => changePassword()}>Change Password</button>
         </div>
       </div>
     </div>
