@@ -91,8 +91,11 @@ function UserPage() {
           }
 
           <br></br>
+          <br></br>
 
-          <button className="btn" onClick={() => changePassword()}>Change Password</button>
+          <div className="btn-group">
+            <button className="btn" onClick={() => changePassword()}>Change Password</button>
+          </div>
         </div>
       </div>
     </div>

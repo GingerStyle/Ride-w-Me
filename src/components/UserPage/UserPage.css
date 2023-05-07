@@ -11,6 +11,11 @@
     text-align: center;
 }
 
+.password-btn {
+    position: relative;
+    justify-content: center;
+}
+
 h2 {
     text-align: center;
 }
