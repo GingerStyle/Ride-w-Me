@@ -3,8 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import stringFormatter from './stringFormatter.saga';
-import updateEmail from './updateEmail.saga';
-import updatePhone from './updatePhone.saga';
+import updateUserInfo from './updateUserInfo.saga';
 import bikePageInfo from './bikePageInfo.saga';
 import datesAvailable from './datesAvailable.saga';
 import searchResults from './searchResults.saga';
@@ -24,8 +23,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     stringFormatter(),
-    updateEmail(),
-    updatePhone(),
+    updateUserInfo(),
     bikePageInfo(),
     datesAvailable(),
     searchResults(),

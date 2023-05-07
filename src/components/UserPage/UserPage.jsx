@@ -12,6 +12,7 @@ function UserPage() {
   const [toggleEmail, setToggleEmail] = useState(true);
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     //get the list of bike types that user owns
@@ -41,7 +42,7 @@ function UserPage() {
 
   //function to handle when the Change Password button is clicked
   const changePassword = () => {
-
+    dispatch({type: 'UPDATE_PASSWORD', payload: {password: password}})
   }
 
   //toggles the value of the togglePhone variable
