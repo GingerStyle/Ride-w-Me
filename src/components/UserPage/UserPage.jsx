@@ -46,6 +46,8 @@ function UserPage() {
     if (password == ''){
       //check that something was entered
       alert('Please enter in a new password.')
+    }else if(password.length < 8){
+      alert('Passwords need to be 8 characters or longer');
     }else{
       //update user password in the database
       dispatch({type: 'UPDATE_PASSWORD', payload: {password: password}});
