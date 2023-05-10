@@ -10,6 +10,7 @@ function UserPage() {
   const bikeTypeString = useSelector(store => store.bikeTypeString);
   const [togglePhone, setTogglePhone] = useState(true);
   const [toggleEmail, setToggleEmail] = useState(true);
+  const [togglePassword, setTogglePassword] = useState(true);
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +32,7 @@ function UserPage() {
   const handleEmailSubmit = () => {
     //check to make sure the email field isn't empty
     if (email == ''){
-      alert('an email address is required');
+      alert('An email address is required.');
     }else{
       //update user email in the database
       dispatch({type: 'UPDATE_EMAIL', payload: {email: email}});
@@ -40,9 +41,17 @@ function UserPage() {
     }
   }
 
-  //function to handle when the Change Password button is clicked
-  const changePassword = () => {
-    dispatch({type: 'UPDATE_PASSWORD', payload: {password: password}})
+  //function to handle what happens when user clicks button to submit new password
+  const handlePasswordSubmit = () => {
+    if (password == ''){
+      //check that something was entered
+      alert('Please enter in a new password.')
+    }else{
+      //update user password in the database
+      dispatch({type: 'UPDATE_PASSWORD', payload: {password: password}});
+      //update DOM to show 'Change Password' button
+      togglePasswordInput();
+    }
   }
 
   //toggles the value of the togglePhone variable
@@ -55,6 +64,10 @@ function UserPage() {
     setToggleEmail(!toggleEmail);
   }
 
+  //toggles the value of the togglePassword variable
+  const togglePasswordInput = () => {
+    setTogglePassword(!togglePassword);
+  }
   
   return (
     <div className="user-page-container">
@@ -95,7 +108,14 @@ function UserPage() {
           <br></br>
 
           <div className="btn-group">
-            <button className="btn" onClick={() => changePassword()}>Change Password</button>
+            {togglePassword ?
+              <><button className="btn" onClick={() => togglePasswordInput()}>Change Password</button></>
+              :
+              <><input required  onChange={(event) => setPassword(event.target.value)}></input>
+              <button className="btn" onClick={() => handlePasswordSubmit()}>Submit</button>{' '}
+              <button className="btn" onClick={() => togglePasswordInput()}>Cancel</button>
+              </>
+            }
           </div>
         </div>
       </div>
