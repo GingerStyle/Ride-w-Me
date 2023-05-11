@@ -91,7 +91,8 @@ function UserPage() {
             <>{user.phone} <button className="btn" onClick={togglePhoneInput}>Edit</button></>
           :
             <><input onChange={(event) => setPhone(event.target.value)}></input> 
-            <button className="btn" onClick={handlePhoneSubmit}>Submit</button></>
+            <button className="btn" onClick={handlePhoneSubmit}>Submit</button>{' '}
+            <button className="btn" onClick={() => togglePhoneInput()}>Cancel</button></>
           }
 
           <br></br>
@@ -101,7 +102,8 @@ function UserPage() {
             <>{user.email} <button className="btn" onClick={toggleEmailInput}>Edit</button></>
           :
           <><input required type="email" onChange={(event) => setEmail(event.target.value)}></input> 
-          <button className="btn" onClick={handleEmailSubmit}>Submit</button></>
+          <button className="btn" onClick={handleEmailSubmit}>Submit</button>{' '}
+          <button className="btn" onClick={() => toggleEmailInput()}>Cancel</button></>
           }
 
           <br></br>

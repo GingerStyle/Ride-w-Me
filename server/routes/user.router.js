@@ -76,7 +76,6 @@ router.put('/updateEmail/:id', (req, res) => {
 // updates user password
 router.put('/updatePassword/:id', (req, res) => {
   const password = encryptLib.encryptPassword(req.params.id);
-  console.log('password contains', password);
   let queryText = `UPDATE "user" SET "password"=$1 WHERE "id"=$2`;
   pool.query(queryText, [password, req.user.id])
   .then(() => {
